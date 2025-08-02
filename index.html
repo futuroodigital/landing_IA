@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futuro Digital - No voy a ser reemplazado</title>
     <!-- Preload de imagen crítica -->
-    <link rel="preload" as="image" href="https://github.com/futuroodigital/landing_IA_epica/raw/main/ChatGPT%20Image%202%20ago%202025%2C%2003_53_27%20p.m..png">
-    <link rel="preload" as="image" href="https://github.com/futuroodigital/landing_IA_epica/raw/main/ChatGPT%20Image%201%20ago%202025%2C%2003_45_51%20p.m..png">
+    <link rel="preload" as="image" href="https://github.com/futuroodigital/landing_IA/raw/051bd7c33e5cc74cc0d34da80e8686b63bce1f0f/ChatGPT%20Image%202%20ago%202025%2C%2003_53_27%20p.m..png">
+    <link rel="preload" as="image" href="https://github.com/futuroodigital/landing_IA/raw/051bd7c33e5cc74cc0d34da80e8686b63bce1f0f/ChatGPT%20Image%201%20ago%202025%2C%2003_45_51%20p.m..png">
     <style>
         * {
             margin: 0;
@@ -27,13 +27,13 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-image: url('https://github.com/futuroodigital/landing_IA_epica/raw/main/ChatGPT%20Image%202%20ago%202025%2C%2003_53_27%20p.m..png');
+            background-image: url('https://github.com/futuroodigital/landing_IA/raw/051bd7c33e5cc74cc0d34da80e8686b63bce1f0f/ChatGPT%20Image%202%20ago%202025%2C%2003_53_27%20p.m..png');
         }
 
         /* Imagen para móvil */
         @media (max-width: 768px) {
             .container {
-                background-image: url('https://github.com/futuroodigital/landing_IA_epica/raw/main/ChatGPT%20Image%201%20ago%202025%2C%2003_45_51%20p.m..png');
+                background-image: url('https://github.com/futuroodigital/landing_IA/raw/051bd7c33e5cc74cc0d34da80e8686b63bce1f0f/ChatGPT%20Image%201%20ago%202025%2C%2003_45_51%20p.m..png');
             }
         }
 
@@ -286,15 +286,22 @@
             
             if (bgImage && bgImage !== 'none') {
                 console.log('✅ Imagen de fondo cargada correctamente');
+                console.log('🖼️ URL de imagen:', bgImage);
             } else {
                 console.log('⚠️ Problema cargando imagen de fondo');
-                // Fallback si no carga
+                console.log('🔧 Aplicando fallback...');
+                // Fallback elegante si no carga
                 container.style.background = 'radial-gradient(ellipse at center, #1a1a1a 0%, #000 70%)';
             }
         }
 
         // Verificar después de cargar
         setTimeout(checkBackgroundImage, 1000);
+
+        // También verificar al cambiar el tamaño de ventana (para responsive)
+        window.addEventListener('resize', () => {
+            setTimeout(checkBackgroundImage, 500);
+        });
     </script>
 </body>
 </html>

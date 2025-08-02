@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futuro Digital - No voy a ser reemplazado</title>
+    <!-- Preload de imagen crítica -->
+    <link rel="preload" as="image" href="https://github.com/futuroodigital/landing_IA_epica/raw/main/ChatGPT%20Image%202%20ago%202025%2C%2003_53_27%20p.m..png">
+    <link rel="preload" as="image" href="https://github.com/futuroodigital/landing_IA_epica/raw/main/ChatGPT%20Image%201%20ago%202025%2C%2003_45_51%20p.m..png">
     <style>
         * {
             margin: 0;
@@ -46,11 +49,11 @@
             text-align: center;
         }
 
-        /* Posicionamiento específico para que coincida con la imagen */
+        /* Posicionamiento específico para que coincida PERFECTAMENTE con la imagen */
         .video-container {
             width: 100%;
-            max-width: 600px;
-            margin: 8rem auto 4rem auto;
+            max-width: 650px;
+            margin: 0 auto 3rem auto;
             position: relative;
             border-radius: 15px;
             overflow: hidden;
@@ -66,11 +69,11 @@
             border-radius: 13px;
         }
 
-        /* Formulario */
+        /* Formulario PERFECTAMENTE POSICIONADO */
         .form-container {
             width: 100%;
             max-width: 400px;
-            margin: 2rem auto 0 auto;
+            margin: 0 auto;
         }
 
         .email-input {
@@ -120,19 +123,22 @@
             transform: translateY(-1px);
         }
 
-        /* Responsive */
+        /* Responsive PERFECTO - Sin encimados */
         @media (max-width: 768px) {
             .content {
                 padding: 1rem;
+                justify-content: flex-start;
+                padding-top: 2rem;
             }
 
             .video-container {
                 max-width: 350px;
-                margin: 4rem auto 3rem auto;
+                margin: 2rem auto 2rem auto;
             }
 
             .form-container {
                 max-width: 350px;
+                margin: 1rem auto 2rem auto;
             }
 
             .email-input {
@@ -146,13 +152,37 @@
             }
         }
 
+        /* Para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .content {
+                padding: 0.5rem;
+                padding-top: 1rem;
+            }
+
+            .video-container {
+                max-width: 320px;
+                margin: 1rem auto 1.5rem auto;
+            }
+
+            .form-container {
+                max-width: 320px;
+                margin: 1rem auto 1rem auto;
+            }
+        }
+
         /* Animaciones sutiles */
         .video-container {
             animation: fadeInUp 1s ease-out;
+            will-change: transform, opacity;
         }
 
         .form-container {
             animation: fadeInUp 1s ease-out 0.3s both;
+            will-change: transform, opacity;
+        }
+
+        .reserve-btn {
+            will-change: transform, box-shadow;
         }
 
         @keyframes fadeInUp {
@@ -247,6 +277,24 @@
                 document.body.style.opacity = '1';
             }, 100);
         });
+
+        // Verificar carga de imagen de fondo
+        function checkBackgroundImage() {
+            const container = document.querySelector('.container');
+            const style = window.getComputedStyle(container);
+            const bgImage = style.backgroundImage;
+            
+            if (bgImage && bgImage !== 'none') {
+                console.log('✅ Imagen de fondo cargada correctamente');
+            } else {
+                console.log('⚠️ Problema cargando imagen de fondo');
+                // Fallback si no carga
+                container.style.background = 'radial-gradient(ellipse at center, #1a1a1a 0%, #000 70%)';
+            }
+        }
+
+        // Verificar después de cargar
+        setTimeout(checkBackgroundImage, 1000);
     </script>
 </body>
 </html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuro Digital - No voy a ser reemplazado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('https://github.com/futuroodigital/landing_IA_epica/raw/main/ChatGPT%20Image%202%20ago%202025%2C%2003_53_27%20p.m..png');
+        }
+
+        /* Imagen para móvil */
+        @media (max-width: 768px) {
+            .container {
+                background-image: url('https://github.com/futuroodigital/landing_IA_epica/raw/main/ChatGPT%20Image%201%20ago%202025%2C%2003_45_51%20p.m..png');
+            }
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 2rem;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Posicionamiento específico para que coincida con la imagen */
+        .video-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 8rem auto 4rem auto;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ffc107;
+            box-shadow: 0 0 30px rgba(255, 193, 7, 0.3);
+            aspect-ratio: 16/9;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 13px;
+        }
+
+        /* Formulario */
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 2rem auto 0 auto;
+        }
+
+        .email-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .email-input::placeholder {
+            color: rgba(255, 193, 7, 0.7);
+        }
+
+        .email-input:focus {
+            box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .reserve-btn {
+            width: 100%;
+            padding: 1.2rem 2rem;
+            background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 193, 7, 0.3);
+        }
+
+        .reserve-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.5);
+        }
+
+        .reserve-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content {
+                padding: 1rem;
+            }
+
+            .video-container {
+                max-width: 350px;
+                margin: 4rem auto 3rem auto;
+            }
+
+            .form-container {
+                max-width: 350px;
+            }
+
+            .email-input {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .reserve-btn {
+                padding: 1rem 1.5rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Animaciones sutiles */
+        .video-container {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .form-container {
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <!-- Video -->
+            <div class="video-container">
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/zJCC1U_QoAg?rel=0&modestbranding=1&showinfo=0" 
+                    title="Futuro Digital - No voy a ser reemplazado"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    style="border-radius: 15px;">
+                </iframe>
+            </div>
+
+            <!-- Formulario -->
+            <div class="form-container">
+                <form id="reservationForm">
+                    <input 
+                        type="email" 
+                        class="email-input" 
+                        placeholder="Tu email"
+                        required
+                        id="userEmail"
+                    >
+                    <button type="submit" class="reserve-btn">
+                        Reserva tu lugar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Manejo del formulario
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('userEmail').value;
+            
+            if (email) {
+                // Aquí puedes agregar lógica para guardar el email
+                console.log('Email capturado:', email);
+                
+                // Redirigir a página de agradecimiento
+                // En producción, cambiarías esto por la URL real de tu página de agradecimiento
+                alert('¡Perfecto! Ahora te redirigiremos para completar tu registro...');
+                
+                // Por ahora simulo la redirección - tú cambiarías esto por tu URL real
+                setTimeout(() => {
+                    // window.location.href = 'https://tu-dominio.com/gracias.html';
+                    // Por ahora abrimos WhatsApp directo, pero idealmente irías a la página de agradecimiento primero
+                    window.open('https://chat.whatsapp.com/Dh8bRstWYHKDmm84vxyNZq', '_blank');
+                }, 1500);
+            }
+        });
+
+        // Validación en tiempo real
+        document.getElementById('userEmail').addEventListener('input', function(e) {
+            const email = e.target.value;
+            const btn = document.querySelector('.reserve-btn');
+            
+            if (email.includes('@') && email.includes('.')) {
+                btn.style.opacity = '1';
+                btn.style.transform = 'scale(1)';
+            } else {
+                btn.style.opacity = '0.7';
+                btn.style.transform = 'scale(0.98)';
+            }
+        });
+
+        // Efecto de carga suave
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

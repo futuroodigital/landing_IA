@@ -66,7 +66,7 @@
             height: 100%;
             background-image: radial-gradient(circle, rgba(255, 193, 7, 0.15) 1px, transparent 1px);
             background-size: 25px 25px;
-            animation: floatDots 20s ease-in-out infinite;
+            animation: floatDots 30s ease-in-out infinite; /* Más lento y suave */
             z-index: 2;
             pointer-events: none;
             will-change: transform;
@@ -100,7 +100,7 @@
             margin-bottom: 2rem;
             text-shadow: 0 0 30px rgba(255, 193, 7, 0.5);
             letter-spacing: -2px;
-            animation: titleWave 4s ease-in-out infinite, titleGlow 6s ease-in-out infinite alternate;
+            animation: titleWave 8s ease-in-out infinite, titleGlow 12s ease-in-out infinite alternate; /* Más lento */
         }
 
         /* Subtítulo espectacular */
@@ -177,7 +177,7 @@
             width: 200%;
             height: 200%;
             background: linear-gradient(45deg, transparent, rgba(255, 193, 7, 0.3), transparent);
-            animation: goldenShine 4s ease-in-out infinite;
+            animation: goldenShine 8s ease-in-out infinite; /* Más lento */
         }
 
         .whatsapp-icon {
@@ -206,7 +206,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: phoneFloatEpic 6s ease-in-out infinite;
+            animation: phoneFloatEpic 12s ease-in-out infinite; /* Más lento */
             border: 2px solid rgba(255, 193, 7, 0.3);
             z-index: 5;
         }
@@ -259,7 +259,7 @@
             position: relative;
             overflow: hidden;
             border: 3px solid rgba(255, 193, 7, 0.8);
-            animation: btnMegaPulse 4s ease-in-out infinite;
+            animation: btnMegaPulse 6s ease-in-out infinite; /* Más lento */
             width: 100%;
             max-width: 500px;
             justify-content: center;
@@ -289,7 +289,7 @@
 
         .whatsapp-btn-icon {
             font-size: 2.5rem;
-            animation: iconMegaSpin 6s ease-in-out infinite;
+            animation: iconMegaSpin 10s ease-in-out infinite; /* Mucho más lento */
         }
 
         /* Lista de beneficios ÉPICA - ESPACIADO PERFECTO */
@@ -304,7 +304,7 @@
             margin-bottom: 3rem;
             text-shadow: 0 0 30px rgba(255, 193, 7, 0.4);
             letter-spacing: -2px;
-            animation: titleWave 5s ease-in-out infinite;
+            animation: titleWave 10s ease-in-out infinite; /* Más lento */
         }
 
         .benefits-list {
@@ -364,7 +364,7 @@
             font-size: 2.5rem;
             font-weight: bold;
             min-width: 50px;
-            animation: checkMegaPulse 3s ease-in-out infinite;
+            animation: checkMegaPulse 5s ease-in-out infinite; /* Más lento */
             text-shadow: 0 0 15px rgba(37, 211, 102, 0.8);
         }
 
@@ -383,8 +383,9 @@
         /* ANIMACIONES OPTIMIZADAS */
         @keyframes floatDots {
             0%, 100% { transform: translateX(0px) translateY(0px); }
-            33% { transform: translateX(10px) translateY(-10px); }
-            66% { transform: translateX(-5px) translateY(5px); }
+            25% { transform: translateX(5px) translateY(-5px); }
+            50% { transform: translateX(0px) translateY(-10px); }
+            75% { transform: translateX(-5px) translateY(-5px); }
         }
 
         @keyframes urgentPulse {
@@ -415,8 +416,9 @@
 
         @keyframes epicRotate {
             0% { transform: rotateY(0deg) rotateX(10deg) rotateZ(0deg); }
-            33% { transform: rotateY(120deg) rotateX(15deg) rotateZ(5deg); }
-            66% { transform: rotateY(240deg) rotateX(5deg) rotateZ(-5deg); }
+            25% { transform: rotateY(90deg) rotateX(15deg) rotateZ(2deg); }
+            50% { transform: rotateY(180deg) rotateX(10deg) rotateZ(0deg); }
+            75% { transform: rotateY(270deg) rotateX(15deg) rotateZ(-2deg); }
             100% { transform: rotateY(360deg) rotateX(10deg) rotateZ(0deg); }
         }
 
@@ -513,7 +515,7 @@
             height: 100%;
             background: linear-gradient(90deg, #ffc107, #ff9800, #25D366);
             width: 0%;
-            animation: loadProgress 2s ease-out forwards;
+            animation: loadProgress 1s ease-out forwards; /* Mucho más rápido */
             box-shadow: 0 0 15px rgba(255, 193, 7, 1);
         }
 
@@ -627,8 +629,8 @@
                 document.querySelector('.loading-bar').style.opacity = '0';
                 setTimeout(() => {
                     document.querySelector('.loading-bar').style.display = 'none';
-                }, 300);
-            }, 2000); // Reducido a 2 segundos
+                }, 200);
+            }, 1000); /* Mucho más rápido - solo 1 segundo */
         });
 
         // Tracking optimizado

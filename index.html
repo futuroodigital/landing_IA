@@ -40,21 +40,19 @@
         .content {
             position: relative;
             z-index: 10;
-            display: flex;
-            flex-direction: column;
             min-height: 100vh;
-            padding: 2rem;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            padding: 0;
+            display: block;
         }
 
-        /* Posicionamiento específico para que coincida PERFECTAMENTE con la imagen */
+        /* Posicionamiento EXACTO para que coincida con las imágenes */
         .video-container {
-            width: 100%;
-            max-width: 650px;
-            margin: 0 auto 3rem auto;
-            position: relative;
+            position: absolute;
+            width: 90%;
+            max-width: 600px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 55%; /* Posicionado en el rectángulo negro de la imagen */
             border-radius: 15px;
             overflow: hidden;
             background: rgba(0, 0, 0, 0.8);
@@ -69,11 +67,14 @@
             border-radius: 13px;
         }
 
-        /* Formulario PERFECTAMENTE POSICIONADO */
+        /* Formulario posicionado EXACTAMENTE debajo del video */
         .form-container {
-            width: 100%;
+            position: absolute;
+            width: 90%;
             max-width: 400px;
-            margin: 0 auto;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 75%; /* Debajo del video */
         }
 
         .email-input {
@@ -123,22 +124,18 @@
             transform: translateY(-1px);
         }
 
-        /* Responsive PERFECTO - Sin encimados */
+        /* Responsive PERFECTO - Posicionamiento específico por dispositivo */
         @media (max-width: 768px) {
-            .content {
-                padding: 1rem;
-                justify-content: flex-start;
-                padding-top: 2rem;
-            }
-
             .video-container {
+                top: 50%; /* Más arriba en móvil */
+                width: 85%;
                 max-width: 350px;
-                margin: 2rem auto 2rem auto;
             }
 
             .form-container {
+                top: 70%; /* Ajustado para móvil */
+                width: 85%;
                 max-width: 350px;
-                margin: 1rem auto 2rem auto;
             }
 
             .email-input {
@@ -154,23 +151,33 @@
 
         /* Para pantallas muy pequeñas */
         @media (max-width: 480px) {
-            .content {
-                padding: 0.5rem;
-                padding-top: 1rem;
-            }
-
             .video-container {
+                top: 45%;
+                width: 90%;
                 max-width: 320px;
-                margin: 1rem auto 1.5rem auto;
             }
 
             .form-container {
+                top: 65%;
+                width: 90%;
                 max-width: 320px;
-                margin: 1rem auto 1rem auto;
             }
         }
 
-        /* Animaciones sutiles */
+        /* Para pantallas grandes (desktop) */
+        @media (min-width: 1200px) {
+            .video-container {
+                top: 58%;
+                max-width: 700px;
+            }
+
+            .form-container {
+                top: 78%;
+                max-width: 450px;
+            }
+        }
+
+        /* Animaciones optimizadas para posicionamiento absoluto */
         .video-container {
             animation: fadeInUp 1s ease-out;
             will-change: transform, opacity;
@@ -188,11 +195,36 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateX(-50%) translateY(30px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        /* Ajustes adicionales para pantallas específicas */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            /* Tablets */
+            .video-container {
+                top: 56%;
+                max-width: 550px;
+            }
+
+            .form-container {
+                top: 76%;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-height: 600px) {
+            /* Pantallas muy bajas */
+            .video-container {
+                top: 40%;
+            }
+
+            .form-container {
+                top: 65%;
             }
         }
     </style>
@@ -200,7 +232,7 @@
 <body>
     <div class="container">
         <div class="content">
-            <!-- Video -->
+            <!-- Video posicionado exactamente donde debe ir -->
             <div class="video-container">
                 <iframe 
                     width="100%" 
@@ -214,7 +246,7 @@
                 </iframe>
             </div>
 
-            <!-- Formulario -->
+            <!-- Formulario posicionado exactamente debajo -->
             <div class="form-container">
                 <form id="reservationForm">
                     <input 
@@ -302,6 +334,36 @@
         window.addEventListener('resize', () => {
             setTimeout(checkBackgroundImage, 500);
         });
+
+        // Ajustar posicionamiento dinámicamente según el tamaño de pantalla
+        function adjustPositioning() {
+            const videoContainer = document.querySelector('.video-container');
+            const formContainer = document.querySelector('.form-container');
+            const windowHeight = window.innerHeight;
+            const windowWidth = window.innerWidth;
+            
+            if (windowWidth <= 480) {
+                // Móviles muy pequeños
+                videoContainer.style.top = '45%';
+                formContainer.style.top = '65%';
+            } else if (windowWidth <= 768) {
+                // Móviles normales
+                videoContainer.style.top = '50%';
+                formContainer.style.top = '70%';
+            } else if (windowWidth <= 1024) {
+                // Tablets
+                videoContainer.style.top = '56%';
+                formContainer.style.top = '76%';
+            } else {
+                // Desktop
+                videoContainer.style.top = '55%';
+                formContainer.style.top = '75%';
+            }
+        }
+
+        // Ejecutar al cargar y al redimensionar
+        window.addEventListener('load', adjustPositioning);
+        window.addEventListener('resize', adjustPositioning);
     </script>
 </body>
 </html>

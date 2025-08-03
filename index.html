@@ -18,15 +18,15 @@
             font-family: 'Arial', sans-serif;
             background: #000;
             overflow-x: hidden;
-            min-height: 100vh;
         }
 
         .container {
             position: relative;
-            min-height: 100vh;
+            min-height: 200vh; /* Permitir scroll para posicionamiento perfecto */
             background-size: cover;
-            background-position: center;
+            background-position: center top;
             background-repeat: no-repeat;
+            background-attachment: fixed;
             background-image: url('https://github.com/futuroodigital/landing_IA/raw/main/ChatGPT%20Image%202%20ago%202025%2C%2003_53_27%20p.m..png');
         }
 
@@ -34,60 +34,66 @@
         @media (max-width: 768px) {
             .container {
                 background-image: url('https://github.com/futuroodigital/landing_IA/raw/main/ChatGPT%20Image%201%20ago%202025%2C%2003_45_51%20p.m..png');
+                background-attachment: scroll;
+                min-height: 150vh;
             }
         }
 
         .content {
             position: relative;
             z-index: 10;
-            min-height: 100vh;
-            padding: 0;
-            display: block;
+            width: 100%;
+            height: 100vh;
         }
 
-        /* Posicionamiento EXACTO para que coincida con las imágenes */
+        /* POSICIONAMIENTO PERFECTO BASADO EN EL DISEÑO ORIGINAL */
+        
+        /* Para Desktop */
         .video-container {
             position: absolute;
-            width: 90%;
-            max-width: 600px;
+            width: 60%;
+            max-width: 800px;
             left: 50%;
             transform: translateX(-50%);
-            top: 55%; /* Posicionado en el rectángulo negro de la imagen */
+            top: 40vh; /* Posicionado exactamente donde está el rectángulo en la imagen */
             border-radius: 15px;
             overflow: hidden;
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #ffc107;
-            box-shadow: 0 0 30px rgba(255, 193, 7, 0.3);
+            background: rgba(0, 0, 0, 0.9);
+            border: 3px solid #ffc107;
+            box-shadow: 0 0 40px rgba(255, 193, 7, 0.4);
             aspect-ratio: 16/9;
+            z-index: 20;
         }
 
         .video-container iframe {
             width: 100%;
             height: 100%;
-            border-radius: 13px;
+            border-radius: 12px;
         }
 
-        /* Formulario posicionado EXACTAMENTE debajo del video */
+        /* Formulario perfectamente posicionado */
         .form-container {
             position: absolute;
-            width: 90%;
-            max-width: 400px;
+            width: 50%;
+            max-width: 500px;
             left: 50%;
             transform: translateX(-50%);
-            top: 75%; /* Debajo del video */
+            top: 65vh; /* Debajo del video con espacio perfecto */
+            z-index: 20;
         }
 
         .email-input {
             width: 100%;
             padding: 1rem 1.5rem;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             border: 2px solid #ffc107;
-            border-radius: 10px;
+            border-radius: 12px;
             color: #fff;
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-bottom: 1.5rem;
             outline: none;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .email-input::placeholder {
@@ -95,107 +101,114 @@
         }
 
         .email-input:focus {
-            box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+            box-shadow: 0 0 25px rgba(255, 193, 7, 0.6);
             background: rgba(0, 0, 0, 0.9);
+            border-color: #ff9800;
         }
 
         .reserve-btn {
             width: 100%;
-            padding: 1.2rem 2rem;
+            padding: 1.3rem 2rem;
             background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             color: #000;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(255, 193, 7, 0.3);
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
         }
 
         .reserve-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(255, 193, 7, 0.6);
+            background: linear-gradient(135deg, #ff9800 0%, #ffc107 100%);
         }
 
         .reserve-btn:active {
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
 
-        /* Responsive PERFECTO - Posicionamiento específico por dispositivo */
+        /* Responsive PERFECTO */
         @media (max-width: 768px) {
+            .container {
+                min-height: 120vh;
+            }
+
             .video-container {
-                top: 50%; /* Más arriba en móvil */
                 width: 85%;
-                max-width: 350px;
+                max-width: 400px;
+                top: 45vh; /* Ajustado para móvil */
             }
 
             .form-container {
-                top: 70%; /* Ajustado para móvil */
                 width: 85%;
-                max-width: 350px;
+                max-width: 400px;
+                top: 68vh; /* Perfecto spacing en móvil */
             }
 
             .email-input {
-                padding: 0.8rem 1.2rem;
-                font-size: 0.9rem;
+                padding: 0.9rem 1.3rem;
+                font-size: 1rem;
             }
 
             .reserve-btn {
-                padding: 1rem 1.5rem;
+                padding: 1.1rem 1.8rem;
                 font-size: 1.1rem;
             }
         }
 
-        /* Para pantallas muy pequeñas */
         @media (max-width: 480px) {
+            .container {
+                min-height: 110vh;
+            }
+
             .video-container {
-                top: 45%;
                 width: 90%;
-                max-width: 320px;
+                max-width: 350px;
+                top: 42vh;
             }
 
             .form-container {
-                top: 65%;
                 width: 90%;
-                max-width: 320px;
+                max-width: 350px;
+                top: 65vh;
             }
         }
 
-        /* Para pantallas grandes (desktop) */
-        @media (min-width: 1200px) {
+        /* Para pantallas muy grandes */
+        @media (min-width: 1400px) {
             .video-container {
-                top: 58%;
-                max-width: 700px;
+                width: 50%;
+                max-width: 900px;
+                top: 42vh;
             }
 
             .form-container {
-                top: 78%;
-                max-width: 450px;
+                width: 40%;
+                max-width: 600px;
+                top: 67vh;
             }
         }
 
-        /* Animaciones optimizadas para posicionamiento absoluto */
+        /* Animaciones suaves */
         .video-container {
-            animation: fadeInUp 1s ease-out;
+            animation: slideInFromTop 1.2s ease-out;
             will-change: transform, opacity;
         }
 
         .form-container {
-            animation: fadeInUp 1s ease-out 0.3s both;
+            animation: slideInFromBottom 1.2s ease-out 0.3s both;
             will-change: transform, opacity;
         }
 
-        .reserve-btn {
-            will-change: transform, box-shadow;
-        }
-
-        @keyframes fadeInUp {
+        @keyframes slideInFromTop {
             from {
                 opacity: 0;
-                transform: translateX(-50%) translateY(30px);
+                transform: translateX(-50%) translateY(-50px);
             }
             to {
                 opacity: 1;
@@ -203,28 +216,40 @@
             }
         }
 
-        /* Ajustes adicionales para pantallas específicas */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            /* Tablets */
-            .video-container {
-                top: 56%;
-                max-width: 550px;
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(50px);
             }
-
-            .form-container {
-                top: 76%;
-                max-width: 400px;
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
             }
         }
 
-        @media (max-height: 600px) {
-            /* Pantallas muy bajas */
-            .video-container {
-                top: 40%;
-            }
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
 
-            .form-container {
-                top: 65%;
+        /* Overlay para mejor contraste si es necesario */
+        .content-overlay {
+            position: absolute;
+            top: 35vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 40vh;
+            background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .content-overlay {
+                top: 40vh;
+                width: 90%;
+                height: 35vh;
             }
         }
     </style>
@@ -232,6 +257,9 @@
 <body>
     <div class="container">
         <div class="content">
+            <!-- Overlay sutil para mejor contraste -->
+            <div class="content-overlay"></div>
+            
             <!-- Video posicionado exactamente donde debe ir -->
             <div class="video-container">
                 <iframe 
@@ -246,7 +274,7 @@
                 </iframe>
             </div>
 
-            <!-- Formulario posicionado exactamente debajo -->
+            <!-- Formulario posicionado perfectamente -->
             <div class="form-container">
                 <form id="reservationForm">
                     <input 
@@ -265,28 +293,22 @@
     </div>
 
     <script>
-        // Manejo del formulario
+        // Manejo del formulario - REDIRECCIÓN INMEDIATA
         document.getElementById('reservationForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const email = document.getElementById('userEmail').value;
             
             if (email) {
-                // Aquí puedes agregar lógica para guardar el email
+                // Guardar email y redirigir INMEDIATAMENTE
                 console.log('Email capturado:', email);
                 
-                // Redirigir a página de agradecimiento
-                // En producción, cambiarías esto por la URL real de tu página de agradecimiento
-                alert('¡Perfecto! Ahora te redirigiremos para completar tu registro...');
-                
-                // Redirigir a página de agradecimiento
-                setTimeout(() => {
-                    window.location.href = 'gracias.html';
-                }, 1500);
+                // Redirección INSTANTÁNEA sin mensajes
+                window.location.href = 'gracias.html';
             }
         });
 
-        // Validación en tiempo real
+        // Validación en tiempo real con feedback visual
         document.getElementById('userEmail').addEventListener('input', function(e) {
             const email = e.target.value;
             const btn = document.querySelector('.reserve-btn');
@@ -294,23 +316,25 @@
             if (email.includes('@') && email.includes('.')) {
                 btn.style.opacity = '1';
                 btn.style.transform = 'scale(1)';
+                btn.style.background = 'linear-gradient(135deg, #ffc107 0%, #ff9800 100%)';
             } else {
-                btn.style.opacity = '0.7';
+                btn.style.opacity = '0.8';
                 btn.style.transform = 'scale(0.98)';
+                btn.style.background = 'linear-gradient(135deg, #ffc107 0%, #ff9800 100%)';
             }
         });
 
-        // Efecto de carga suave
+        // Efecto de carga optimizado
         window.addEventListener('load', function() {
             document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease';
+            document.body.style.transition = 'opacity 0.8s ease';
             
             setTimeout(() => {
                 document.body.style.opacity = '1';
             }, 100);
         });
 
-        // Verificar carga de imagen de fondo
+        // Verificar carga de imagen de fondo con mejor feedback
         function checkBackgroundImage() {
             const container = document.querySelector('.container');
             const style = window.getComputedStyle(container);
@@ -318,52 +342,43 @@
             
             if (bgImage && bgImage !== 'none') {
                 console.log('✅ Imagen de fondo cargada correctamente');
-                console.log('🖼️ URL de imagen:', bgImage);
+                container.style.opacity = '1';
             } else {
-                console.log('⚠️ Problema cargando imagen de fondo');
-                console.log('🔧 Aplicando fallback...');
-                // Fallback elegante si no carga
-                container.style.background = 'radial-gradient(ellipse at center, #1a1a1a 0%, #000 70%)';
+                console.log('⚠️ Aplicando fallback de imagen...');
+                // Fallback elegante con gradiente que simula el diseño
+                container.style.background = `
+                    radial-gradient(ellipse at 80% 50%, rgba(255, 193, 7, 0.4) 0%, transparent 50%),
+                    radial-gradient(ellipse at 100% 100%, rgba(255, 152, 0, 0.5) 0%, transparent 70%),
+                    radial-gradient(ellipse at center, #1a1a1a 0%, #000 70%)
+                `;
             }
         }
 
         // Verificar después de cargar
-        setTimeout(checkBackgroundImage, 1000);
+        setTimeout(checkBackgroundImage, 500);
 
-        // También verificar al cambiar el tamaño de ventana (para responsive)
-        window.addEventListener('resize', () => {
-            setTimeout(checkBackgroundImage, 500);
-        });
-
-        // Ajustar posicionamiento dinámicamente según el tamaño de pantalla
-        function adjustPositioning() {
+        // Optimización para diferentes tamaños de pantalla
+        function optimizeForScreen() {
             const videoContainer = document.querySelector('.video-container');
             const formContainer = document.querySelector('.form-container');
             const windowHeight = window.innerHeight;
             const windowWidth = window.innerWidth;
             
-            if (windowWidth <= 480) {
-                // Móviles muy pequeños
-                videoContainer.style.top = '45%';
-                formContainer.style.top = '65%';
-            } else if (windowWidth <= 768) {
-                // Móviles normales
-                videoContainer.style.top = '50%';
-                formContainer.style.top = '70%';
-            } else if (windowWidth <= 1024) {
-                // Tablets
-                videoContainer.style.top = '56%';
-                formContainer.style.top = '76%';
-            } else {
-                // Desktop
-                videoContainer.style.top = '55%';
-                formContainer.style.top = '75%';
+            // Ajustar si la pantalla es muy baja
+            if (windowHeight < 700) {
+                if (windowWidth <= 768) {
+                    videoContainer.style.top = '35vh';
+                    formContainer.style.top = '58vh';
+                } else {
+                    videoContainer.style.top = '35vh';
+                    formContainer.style.top = '60vh';
+                }
             }
         }
 
-        // Ejecutar al cargar y al redimensionar
-        window.addEventListener('load', adjustPositioning);
-        window.addEventListener('resize', adjustPositioning);
+        // Ejecutar optimización
+        window.addEventListener('load', optimizeForScreen);
+        window.addEventListener('resize', optimizeForScreen);
     </script>
 </body>
 </html>
